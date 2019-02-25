@@ -1,2 +1,31 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>User page</h1>
+  <p>Welcome to the user page</p>
+
+  <h2>
+    <a href="/signup"> Sign up </a>
+  </h2>
+    <h2>
+    <a href="/login"> Log in </a>
+  </h2>
+
+  <h1>User list:</h1>
+  <ul>
+  {{#each users}}
+    <li>user: {{this.username}}</li>
+    <li>pw: {{this.password}}</li>
+    <br><br>
+  {{/each}}
+  </ul>
+
+</body>
+</html>

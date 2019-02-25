@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>Sign up page</h1>
+  <p>Welcome to the sign up page</p>
+
+  {{#if registered}}
+  <h2>Registeration successful!</h2>
+  <a href="/login">
+    Go to log in page!
+  </a>
+  {{else}}
+   <h2>Register:</h2>
+  <form action="/signup" method="POST" id="register">
+    <input type="text" name="username">
+    <input type="text" name="password"><br><br>
+    <button>sign up</button>
+  </form>
+  {{/if}}
+
+</body>
+</html>
