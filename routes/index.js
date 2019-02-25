@@ -54,6 +54,7 @@ router.post('/login', function (req, res) {
     } else {
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if (result == true) {
+          res.cookie('user', user.username, { signed : true });
           res.send('password correct!');
         } else {
           res.send('password incorrect!');
@@ -62,5 +63,12 @@ router.post('/login', function (req, res) {
     }
   });
 });
+
+router.get('/logout', function (req, res) {
+  res.clearCookie('user');
+  res.redirect('/')
+})
+
+
 
 module.exports = router;
