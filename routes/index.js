@@ -62,18 +62,20 @@ router.post('/login', function (req, res) {
     } else {
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if (result == true) {
-          res.cookie('user', user.username, { signed : true });
+          //res.cookie('user', user.username, { signed : true });
+          debugger
+          req.session.currentUser = user.username;
           res.redirect('member/index')
         } else {
           res.send('password incorrect!');
         }
       });
     }
-  });
+  })
 });
 
-router.get('/member/*', (req, res, next) => {
-  if(req.signedCookies.user){
+router.get('/member/*', (req, res, next) => {         
+  if(req.session.currentUser){
     next();
   } else {
     res.send("you are not permitted to view this page")
@@ -85,7 +87,7 @@ router.get('/member/index', (req, res) => {
 })
 
 router.get('/logout', function (req, res) {
-  res.clearCookie('user');
+  //res.clearCookie('user');
   res.redirect('/')
 })
 
